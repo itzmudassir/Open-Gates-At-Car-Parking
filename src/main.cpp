@@ -1,3 +1,6 @@
+//Open gates at Car Parking
+
+
 #include <Arduino.h>
 #include <Servo.h>     //Servo library
 #include<LiquidCrystal_I2C.h>  //LCD Library
@@ -27,40 +30,40 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   ir1Read = digitalRead(ir1);  //Read the value of first infrared Sensor
-  ir2Read = digitalRead(ir2);
-  if (ir1Read == LOW && ir2Read == HIGH) 
+  ir2Read = digitalRead(ir2);  //Read the value of 2nd infrared Sensor
+  if (ir1Read == LOW && ir2Read == HIGH)  //if condition for first infrared sensor
   {
     
-    lcd.setCursor(0, 0);
-    lcd.print("Door is");
-    lcd.setCursor(0, 1);
-    lcd.print("OPEN");
+    lcd.setCursor(0, 0);  //Set cursor at First Line
+    lcd.print("Door is"); //Print message
+    lcd.setCursor(0, 1);  //Set cursor at Second Line
+    lcd.print("OPEN");    //Print message
 
-    myservo1.write(90);
+    myservo1.write(90);   //Servo at 90 degree
 
   }
 
-  if (ir1Read == HIGH && ir2Read == LOW) 
+  if (ir1Read == HIGH && ir2Read == LOW)  //if condition for 2nd infrared sensor
     {
     
-      lcd.setCursor(0, 0);
-      lcd.print("Door is");
-      lcd.setCursor(0, 1);
-      lcd.print("OPEN");
+      lcd.setCursor(0, 0);   //Set cursor at First Line
+      lcd.print("Door is");  //Print message
+      lcd.setCursor(0, 1);   //Set cursor at Second Line
+      lcd.print("OPEN");     //Print message
 
-      myservo1.write(90);
+      myservo1.write(90);    //Servo at 90 degree
 
   }
 
-  if (ir1Read == HIGH && ir2Read == HIGH)
+  if (ir1Read == HIGH && ir2Read == HIGH)    //if condition for both infrared sensors
    {
     
-    lcd.setCursor(0, 0);
-    lcd.print("Door is");
-    lcd.setCursor(0, 1);
-    lcd.print("CLOSED");
+    lcd.setCursor(0, 0);   //Set cursor at First Line
+    lcd.print("Door is");  //Print message
+    lcd.setCursor(0, 1);   //Set cursor at Second Line
+    lcd.print("CLOSED");   //Print message
 
-    myservo1.write(0);
+    myservo1.write(0);    //Servo at 0 degree
 
   }
   
